@@ -16,6 +16,27 @@ public class Binary {
         int target = 25;
         int location = binarySearch(numList, target);
         System.out.println("The target was found at index " + location);
+        int[] listToSort = {7, 8, 5 ,4, 9, 2};
+        System.out.println("\n\nOriginal list");
+        for(int n: listToSort){
+            System.out.print(n + " ");
+        }
+        selectionSort(listToSort);
+        int[] listToSort2 = {5, 8, 1, 3 ,9, 6};
+        System.out.println("\n Sorted List");
+        for(int n:listToSort){
+            System.out.print(n + " ");
+        }
+        System.out.println("\n\nOriginal list");
+        for(int n: listToSort2){
+            System.out.print(n + " ");
+        }
+        insertionSort(listToSort2);
+        System.out.println("\n Sorted List");
+        for(int n:listToSort2){
+            System.out.print(n + " ");
+        }
+
     }
         //write the binary search to look for 25
     public static double calculateMedian(ArrayList<Integer> numList){
@@ -80,6 +101,35 @@ public class Binary {
             }
         }
         return -1;
+    }
+    public static void selectionSort(int[] arr){
+        int len = arr.length;
+
+        for(int i = 0; i < len - 1; i++){
+            int min = i;
+            for(int j = i+1; j< len; j++){
+                if(arr[j] < arr[min]){
+                    min = j;
+                }
+            }
+            int temp = arr[min];
+            arr[min] = arr[i];
+            arr[i] = temp;
+        }
+    }
+    public static void insertionSort(int[] arr){
+        int len = arr.length;
+        for(int i = 1; i < len; i++){
+            int key = arr[i];
+            int j = i -1;
+            while(j>=0 && arr[j] > key){
+                int temp = arr[j];
+                arr[j] = arr[j+1];
+                arr[j+1] = temp;
+                j--;
+            }
+
+        }
     }
 }
 
