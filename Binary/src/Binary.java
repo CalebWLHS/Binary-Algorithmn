@@ -18,13 +18,18 @@ public class Binary {
         System.out.println(location);
     }
         //write the binary search to look for 25
-        public static double calculateMedian(ArrayList<Integer> numList){
-
-            if(numList.size()%2 == 0){
+    public static double calculateMedian(ArrayList<Integer> numList){
+            if(numList.size() == 1){
+                return numList.get(0);
+            }
+            else if(numList.size() == 2){
+                return (numList.get(0)+numList.get(1))/2.0;
+            }
+            else if(numList.size()%2 == 0){
                 return (numList.get(numList.size()/2)+numList.get(numList.size()/2-1))/2;
             }
             else if(numList.size()%2 == 1){
-                return numList.get(numList.size()/2);
+                return numList.get((int)numList.size()/2);
             }
             return 0;
 
@@ -32,20 +37,25 @@ public class Binary {
         public static int binarySearch(ArrayList<Integer> numList, int target){
             ArrayList<Integer> newList = numList;
         for(int i = 0; i< newList.size(); i++){
-            if(newList.get(0) == target){
+            System.out.println(calculateMedian(newList));
+            System.out.println("hello");
+                    System.out.println(target);
+                    System.out.println(calculateMedian(newList) == target);
+            if(calculateMedian(newList) == target){
                 for(int p = 0; p < numList.size(); p++){
-                    if(numList.get(p) == newList.get(0)) {
+                    if(numList.get(p) == calculateMedian(newList)) {
                         return p;
                     }
                 }
             }
             else if(calculateMedian(newList) < target){
-                for(int j = 0; j < (newList.size()+1)/2 ; j++){
+                int count = 0;
+                for(int j = (((int)newList.size()+1)/2)-1; j >= 0 ; j--){
                     newList.remove(j);
                 }
             }
             else{
-                for(int k = newList.size()-1; k > (newList.size()+1)/2; k--){
+                for(int k = newList.size()-1; k >= (((int)newList.size()+1)/2)-1; k--){
                     newList.remove(k);
                 }
             }
