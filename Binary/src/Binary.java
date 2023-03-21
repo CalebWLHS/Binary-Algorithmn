@@ -15,7 +15,7 @@ public class Binary {
         System.out.println(numList);
         int target = 25;
         int location = binarySearch(numList, target);
-        System.out.println(location);
+        System.out.println("The target was found at index " + location);
     }
         //write the binary search to look for 25
     public static double calculateMedian(ArrayList<Integer> numList){
@@ -34,7 +34,7 @@ public class Binary {
             return 0;
 
     }
-        public static int binarySearch(ArrayList<Integer> numList, int target){
+        /*public static int binarySearch(ArrayList<Integer> numList, int target){
             ArrayList<Integer> newList = numList;
         for(int i = 0; i< newList.size(); i++){
             System.out.println(calculateMedian(newList));
@@ -62,7 +62,25 @@ public class Binary {
         }
         return -1;
     }
+*/
+    public static int binarySearch(ArrayList<Integer> givenList, int target){
+        int low = 0;
+        int high = givenList.size()-1;
 
+        while(low <= high){
+            int mid = (low +high)/2;
+            if(givenList.get(mid) == target){
+                return mid;
+            }
+            else if(givenList.get(mid) < target){
+                low = mid + 1;
+            }
+            else if(givenList.get(mid) >  target){
+                high = mid - 1;
+            }
+        }
+        return -1;
     }
+}
 
 
